@@ -1,44 +1,55 @@
 # ==============================
-# ⚙️  ARCHIVOS GENERALES
+# ⚙️ ARCHIVOS Y DIRECTORIOS GENERALES
 # ==============================
-*.pyc
-*.pyo
-*.pyd
-__pycache__/
+.git
+.gitignore
+README.md
+LICENSE
+*.md
 *.log
-*.env
-.env.*
+*.swp
+*.swo
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
-*.swp
-*.swo
+*.pid
+tmp/
+data/
+volumes/
 
 # ==============================
 # 🐍 BACKEND (Python / FastAPI)
 # ==============================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.venv/
+venv/
+env/
 backend/__pycache__/
 backend/.pytest_cache/
 backend/.mypy_cache/
 backend/.ruff_cache/
-backend/venv/
-backend/.venv/
-backend/env/
 backend/.env
-backend/*.sqlite3
-backend/*.db
-backend/.coverage
+backend/tests/
 backend/htmlcov/
+backend/.coverage
+backend/*.egg-info
+backend/build/
+backend/dist/
 
 # ==============================
 # 💻 FRONTEND (React / TypeScript)
 # ==============================
 frontend/node_modules/
-frontend/.vite/
 frontend/dist/
 frontend/build/
 frontend/.eslintcache
+frontend/.vite/
 frontend/.env
 frontend/.env.local
 frontend/.env.development.local
@@ -46,46 +57,28 @@ frontend/.env.test.local
 frontend/.env.production.local
 
 # ==============================
+# 🧠 OLLAMA
+# ==============================
+# Evitar copiar modelos pesados o datos persistentes
+ollama_data/
+**/.ollama/
+**/models/
+
+# ==============================
 # 🐋 DOCKER
 # ==============================
-# Archivos temporales de Docker
-**/Dockerfile~
-**/docker-compose*.yml~
+# Archivos de configuración que no deben ir dentro del contenedor
+docker-compose.yml
 docker-compose.override.yml
 docker-compose.dev.yml
 docker-compose.prod.yml
-
-# Volúmenes o montajes locales
-ollama_data/
-volumes/
-data/
-tmp/
-*.pid
-
-# ==============================
-# 🧠 OLLAMA
-# ==============================
-# No subir modelos (pesan varios GB)
-root/.ollama/
-**/.ollama/
-**/models/
-**/ollama_data/
+**/Dockerfile~
 
 # ==============================
 # 🧰 DEPENDENCIAS Y BUILD
 # ==============================
-*.egg-info/
 .eggs/
+*.egg-info/
+*.spec
 build/
 dist/
-*.spec
-
-# ==============================
-# 🔒 SEGURIDAD
-# ==============================
-# Archivos con llaves o tokens
-secrets.json
-*.key
-*.pem
-*.crt
-*.pfx
