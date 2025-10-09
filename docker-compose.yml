@@ -20,17 +20,20 @@ services:
     volumes:
       - ./backend:/app
     restart: unless-stopped
-frontend:
-  build: ./frontend
-  ports:
-    - "3000:3000"
-  depends_on:
-    - backend
-  environment:
-    - VITE_API_URL=http://backend:8000
-  volumes:
-    - ./frontend:/app
-  restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_URL=http://backend:8000
+    volumes:
+      - ./frontend:/app
+    restart: unless-stopped
+
+  
 volumes:
   ollama_data:
 
