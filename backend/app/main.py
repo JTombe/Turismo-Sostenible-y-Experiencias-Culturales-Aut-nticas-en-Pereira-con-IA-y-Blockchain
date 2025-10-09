@@ -14,8 +14,7 @@ def root():
 def generate(prompt: str):
     response = requests.post(
         f"{OLLAMA_URL}/api/generate",
-        json={"model": "llama3", "prompt": prompt},
+        json={"model": "llama3.2", "prompt": prompt},
         stream=False,
     )
     return response.json()
-1
