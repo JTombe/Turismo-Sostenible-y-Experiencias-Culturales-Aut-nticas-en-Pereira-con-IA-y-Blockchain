@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head><title>Crear Evento</title></head>
+<body>
+    <h1>Cuestionario para Evento</h1>
+    <form method="post" action="/procesar_evento">
+        <label>Lugar ID (tu usuario ID): <input type="number" name="lugar_id" required></label><br>
+        <label>Título: <input type="text" name="titulo" required></label><br>
+        <label>Descripción: <textarea name="descripcion"></textarea></label><br>
+        <label>Fecha Inicio: <input type="datetime-local" name="fecha_inicio" required></label><br>
+        <label>Fecha Fin: <input type="datetime-local" name="fecha_fin" required></label><br>
+        <label>Capacidad: <input type="number" name="capacidad"></label><br>
+        <label>¿Es masivo? <input type="checkbox" name="es_masivo" value="true"></label><br>
+        <label>NFTs a generar: <input type="number" name="nft_cantidad" min="0"></label><br>
+        <h3>Tags para matching (1-5)</h3>
+        <label>Cultural: <input type="number" name="cultural" min="1" max="5"></label><br>
+        <label>Sostenible: <input type="number" name="sostenible" min="1" max="5"></label><br>
+        <button type="submit">Crear Evento</button>
+    </form>
+</body>
+</html>

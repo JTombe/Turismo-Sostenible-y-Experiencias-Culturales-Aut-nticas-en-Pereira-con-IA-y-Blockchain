@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Crear Perfil Usuario</title></head>
+<body>
+    <h1>Encuesta de Personalidad para Ruta Turística</h1>
+    <form method="post" action="/procesar_usuario">
+        <label>Email: <input type="email" name="email" required></label><br>
+        <label>Nombre: <input type="text" name="nombre" required></label><br>
+        <label>Password: <input type="password" name="password" required></label><br>
+        <h3>Preguntas (elige 1-5: 1=bajo, 5=alto)</h3>
+        <label>¿Eres extrovertido? <input type="number" name="extrovertido" min="1" max="5" required></label><br>
+        <label>¿Prefieres aventuras al aire libre? <input type="number" name="aventurero" min="1" max="5" required></label><br>
+        <label>¿Te interesa lo cultural/sostenible? <input type="number" name="cultural" min="1" max="5" required></label><br>
+        <label>Tipo: <select name="tipo"><option value="usuario_final">Usuario Final</option><option value="lugar_privado">Lugar Privado</option></select></label><br>
+        <button type="submit">Crear Perfil</button>
+    </form>
+</body>
+</html>
