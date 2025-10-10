@@ -24,7 +24,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "3000:3000"
+      - "5174:5173"
     depends_on:
       - backend
     environment:
@@ -34,24 +34,22 @@ services:
     restart: unless-stopped
 
 
-  services:
-    db:
-      image: mariadb:10.11  # VersiĆ³n estable de MariaDB
-      container_name: maria-turismo
-      restart: always
-      environment:
-        MYSQL_ROOT_PASSWORD: rootpass  # Cambia esto
-        MYSQL_DATABASE: turismo_db     # DB por defecto para tu proyecto
-        MYSQL_USER: turismo_user       # Usuario no-root
-        MYSQL_PASSWORD: turismopass    # Password para el usuario
-      ports:
-        - "3306:3306"                  # Puerto local:contenedor
-      volumes:
-        - maria-data:/var/lib/mysql   # Persiste datos en un volumen
+  mariadb:
+    image: mariadb:11.3
+    container_name: mariadb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password_seguro
+      - MYSQL_DATABASE=mi_base_datos
+      - MYSQL_USER=app_user
+      - MYSQL_PASSWORD=app_password_seguro
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   maria-data:  # Volumen para no perder datos al apagar
   ollama_data:
-
-
-
+  mariadb_data:

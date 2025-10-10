@@ -1,26 +1,3 @@
-from fastapi import FastAPI, Form, Request
-from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse
-import pymysql  # Para conectar a MariaDB
-
-app = FastAPI()
-templates = Jinja2Templates(directory="templates")  # Crea carpeta 'templates' después
-
-def get_db():
-    try:
-        print("Intentando conectar a la base de datos...")
-        db = pymysql.connect(
-            host="localhost", port=3306, user="root", password="rootpass", database="turismo_db"
-        )
-        print("Conexión exitosa a la base de datos.")
-        return db
-    except pymysql.Error as err:
-        print(f"Error de MySQL: {err}")
-        raise
-    except Exception as e:
-        print(f"Error general: {e}")
-        raise
-
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})

@@ -1,6 +1,6 @@
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    tipo ENUM('usuario_final', 'lugar_privado', 'evento_masivo') NOT NULL,  -- Diferencia actores
+    tipo ENUM('usuario_final', 'lugar_privado') NOT NULL,  -- Diferencia actores
     email VARCHAR(255) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,  -- Usa bcrypt en FastAPI
     nombre VARCHAR(255) NOT NULL,

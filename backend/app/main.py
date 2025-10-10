@@ -1,10 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Form, Request
 import requests
 import os
+import pymysql 
+
 
 app = FastAPI()
 
-OLLAMA_URL = os.getenv("OLLAMA_API_URL", "http://localhost:11434")
+OLLAMA_URL = os.getenv("OLLAMA_API_URL", "http://ollama:11434")
 
 @app.get("/")
 def root():
@@ -17,4 +19,7 @@ def generate(prompt: str):
         json={"model": "llama3.2", "prompt": prompt},
         stream=False,
     )
-    return response.json()
+
+# @app.post("login")
+# def login():
+#     response =

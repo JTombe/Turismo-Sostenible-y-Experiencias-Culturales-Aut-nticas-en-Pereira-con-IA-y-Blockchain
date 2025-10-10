@@ -1,16 +1,17 @@
-FROM node:20-alpine
+# Etapa de desarrollo
+FROM node:20
 
 WORKDIR /app
 
-# Copiamos primero los manifiestos para aprovechar la cache de Docker
+# Copiar dependencias e instalar
 COPY package*.json ./
-
-# Instalamos dependencias
 RUN npm install
 
-# Copiamos el resto del código
+# Copiar el resto del código
 COPY . .
 
-EXPOSE 3000
+# Exponer el puerto que usa Vite
+EXPOSE 5173
 
+# Comando para desarrollo
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
